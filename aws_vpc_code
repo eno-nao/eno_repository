@@ -55,3 +55,71 @@ Resources:
       Tags:
        - Key: Name
          Value: enomoto-igw-01
+         
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId:
+        Ref: myVPC
+      InternetGatewayId:
+        Ref: myInternetGateway
+
+  RouteTablePub:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:  
+        Ref: myVPC
+      Tags:
+      - Key: Name
+        Value: enomoto-pub-rtb
+
+  RouteTablePri1a:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:  
+        Ref: myVPC
+      Tags:
+      - Key: Name
+        Value: enomoto-pri1a-rtb
+
+              
+  RouteTablePri1c:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:  
+        Ref: myVPC
+      Tags:
+      - Key: Name
+        Value: enomoto-pri1c-rtb
+
+  Pub1aSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: SubnetPub1a
+      RouteTableId:
+        Ref: RouteTablePub
+
+  Pub1cSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: SubnetPub1c
+      RouteTableId:
+        Ref: RouteTablePub
+
+  Pri1aSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: SubnetPri1a
+      RouteTableId:
+        Ref: RouteTablePri1a
+
+  Pri1cSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: SubnetPri1c
+      RouteTableId:
+        Ref: RouteTablePri1c
