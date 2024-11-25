@@ -9,9 +9,9 @@ Resources:
        - Key: Name
          Value: enomoto-vpc-01
 
-myInternetGateway:
-  Type: AWS::EC2::InternetGateway
-  Properties:
-    Tags:
-      - Key: Name
-        Value: enomoto-igw-01
+  myInternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+       - Key: Name
+         Value: enomoto-igw-01
